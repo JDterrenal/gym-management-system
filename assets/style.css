@@ -1,0 +1,318 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.material-icons-outlined {
+  vertical-align: middle;
+  line-height: 1px;
+  font-size: 35px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 3fr;
+  grid-template-areas:
+    'sidebar header header header'
+    'sidebar main main main';
+  height: 100vh;
+}
+
+
+/* ---------- SIDEBAR ---------- */
+
+#sidebar {
+  grid-area: sidebar;
+  height: 100%;
+  background-color: #2e394b;
+  overflow-y: auto;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px 10px 30px;
+}
+
+.sidebar-title > span {
+  display: none;
+}
+
+.sidebar-brand {
+  width: 100%;
+}
+
+.sidebar-list {
+  padding: 0;
+  margin-top: 5px;
+  list-style-type: none;
+}
+
+.sidebar-list-item {
+  padding: 20px 20px 20px 20px;
+  font-size: 18px;
+}
+
+.sidebar-list-item:hover {
+  background-color: #9a1c1f;
+  cursor: pointer;
+}
+
+.sidebar-list-item > a {
+  text-decoration: none;
+  color: white;
+}
+
+
+.sidebar-responsive {
+  display: inline !important;
+  position: absolute;
+  /*
+    the z-index of the ApexCharts is 11
+    we want the z-index of the sidebar higher so that
+    the charts are not showing over the sidebar 
+    on small screens
+  */
+  z-index: 12 !important;
+}
+
+/* ---------- MAIN ---------- */
+
+.main-container {
+  grid-area: main;
+  overflow-y: auto;
+  padding: 20px 20px;
+}
+
+.main-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-title h2 {
+  color: #2e394b;
+  font-size: 30px; 
+  font-weight: 700;
+}
+
+.main-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.card {
+  padding: 25px;
+  box-sizing: border-box;
+  border: 1px solid #d2d2d3;
+  border-radius: 5px;
+  box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+}
+
+.card:first-child {
+  border-left: 7px solid #2962ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+}
+
+.card:nth-child(2) {
+  border-left: 7px solid #ff6d00;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+}
+
+.card:nth-child(3) {
+  border-left: 7px solid #2e7d32;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+}
+
+.card:nth-child(4) {
+  border-left: 7px solid #d50000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+}
+
+.card-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-inner > .material-icons-outlined {
+  font-size: 1.4rem;
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 60px;
+}
+
+.charts-card {
+  background-color: #263043;
+  margin-bottom: 20px;
+  padding: 25px;
+  box-sizing: border-box;
+  -webkit-column-break-inside: avoid;
+  border-radius: 5px;
+  box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+}
+
+.chart-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- MEDIA QUERIES ---------- */
+
+/* Medium <= 992px */
+
+@media screen and (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+      'header'
+      'main';
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  .menu-icon {
+    display: inline;
+  }
+
+  .sidebar-title > span {
+    display: inline;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .header-left {
+    display: none;
+  }
+}
+
+.table-container {
+  background: #fff;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.table{
+  width: 100%;
+}
+
+
+/***** CREATE & UPDATE MODAL *****/
+.user-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+
+.field-input{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+
+.field-input label{
+  margin-right: 5px;
+}
+
+.modal-content{
+  padding: 1rem;
+}
+
+.user-details .field-input input{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.user-details .field-input input:focus,
+.user-details .field-input input:valid {
+  border-color: #322677;
+}
+
+.gender-details .gender-title {
+  font-size: 1rem;
+}
+
+.gender-categ {
+  display: flex;
+  width: 80%;
+  margin: 14px 0;
+  justify-content: space-between;
+}
+
+.gender-categ label{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+form .gender-categ label .dot {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+
+#male:checked~.gender-categ label .one,
+#female:checked~.gender-categ label .two,
+#other:checked~.gender-categ label .three {
+  background: #9A1C1F;
+  border-color: #d9d9d9;
+}
+
+form input[type="radio"] {
+  display: none;
+}
